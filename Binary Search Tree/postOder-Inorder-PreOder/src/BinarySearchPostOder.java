@@ -24,7 +24,6 @@ public class BinarySearchPostOder {
             System.out.printf("%d ",root.data);
             PreOder(root.left);
             PreOder(root.right);
-
         }
     }
     // InOrder
@@ -35,7 +34,6 @@ public class BinarySearchPostOder {
             System.out.printf("%d ",root.data);
             size++;
             InOrder(root.right);
-
         }
     }
     //interative solution
@@ -63,9 +61,7 @@ public class BinarySearchPostOder {
                 System.out.print(current.data + " ");
                 current = null;
             }
-
         }
-
     }
     public TreeNode delete(TreeNode node, int val){
         if (node == null) return null;
@@ -124,6 +120,23 @@ public class BinarySearchPostOder {
     public int getSize(){
         return size;
     }
+    public boolean search(TreeNode node, int val){
+        if (node == null) {
+            return false;
+        }
+         else if(node.data == val){
+             return true;
+        }
+         boolean val1 = search(node.left,val);
+         if (val1){
+             return true;
+         }
+        boolean val2 = search(node.right,val);
+        if (val2) {
+            return true;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         BinarySearchPostOder bi = new BinarySearchPostOder();
         // creating a binary tree
@@ -141,10 +154,13 @@ public class BinarySearchPostOder {
         System.out.println("using Interatuve solution: ");
         bi.postOderIter(rootNode);
 
-        bi.delete(rootNode,30);
-        System.out.println("\ndelete: ");
-        bi.postOderIter(rootNode);
 
-        System.out.println(bi.getSize());;
+         if ( bi.search(rootNode,12))
+             System.out.println("YES");
+         else System.out.println("NO");
+//        bi.delete(rootNode,30);
+//        System.out.println("\ndelete: ");
+//        bi.postOderIter(rootNode);
+//        System.out.println(bi.getSize());;
     }
 }

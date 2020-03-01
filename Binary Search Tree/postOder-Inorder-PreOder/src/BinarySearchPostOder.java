@@ -28,10 +28,12 @@ public class BinarySearchPostOder {
         }
     }
     // InOrder
+    int size = 0;
     public void InOrder(TreeNode root){
         if (root != null){
             InOrder(root.left);
             System.out.printf("%d ",root.data);
+            size++;
             InOrder(root.right);
 
         }
@@ -119,6 +121,9 @@ public class BinarySearchPostOder {
 
         return rootNode;
     }
+    public int getSize(){
+        return size;
+    }
     public static void main(String[] args) {
         BinarySearchPostOder bi = new BinarySearchPostOder();
         // creating a binary tree
@@ -139,5 +144,7 @@ public class BinarySearchPostOder {
         bi.delete(rootNode,30);
         System.out.println("\ndelete: ");
         bi.postOderIter(rootNode);
+
+        System.out.println(bi.getSize());;
     }
 }
